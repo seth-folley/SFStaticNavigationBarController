@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SFStaticNavigationBarController_Example' do
+  pod 'SFStaticNavigationBarController', :path => '../'
+
+  target 'SFStaticNavigationBarController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
