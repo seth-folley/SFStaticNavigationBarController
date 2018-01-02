@@ -84,7 +84,7 @@ public class StaticNavigationController: UINavigationController, UINavigationBar
     public convenience init(centerViewController: UIViewController, toolbarClass: AnyClass? = nil) {
         self.init(navigationBarClass: StaticNavigationBar.self, toolbarClass: toolbarClass)
 
-        view.backgroundColor = UIColor.cyan
+//        view.backgroundColor = UIColor.cyan
 
         self.centerViewController = centerViewController
         viewControllerStack.append(self.centerViewController)

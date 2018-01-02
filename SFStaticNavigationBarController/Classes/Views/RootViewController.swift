@@ -25,7 +25,7 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .brown
+//        view.backgroundColor = .brown
         view.addSubview(containerView)
 
         if let view = currentView {
