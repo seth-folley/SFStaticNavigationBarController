@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		255E2AE31FA8B6007507AADE /* Pods_SFStaticNavigationBarController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BE442D4FEEA77FDBE4EC89 /* Pods_SFStaticNavigationBarController_Tests.framework */; };
+		5D9B23DF1FF99F0300D854B2 /* ExampleRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B23DB1FF99F0200D854B2 /* ExampleRightViewController.swift */; };
+		5D9B23E01FF99F0300D854B2 /* ExampleCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B23DC1FF99F0200D854B2 /* ExampleCenterViewController.swift */; };
+		5D9B23E11FF99F0300D854B2 /* ExampleLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B23DD1FF99F0200D854B2 /* ExampleLeftViewController.swift */; };
+		5D9B23E21FF99F0300D854B2 /* ExampleAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B23DE1FF99F0200D854B2 /* ExampleAdditionalViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
@@ -29,21 +31,23 @@
 
 /* Begin PBXFileReference section */
 		15BE442D4FEEA77FDBE4EC89 /* Pods_SFStaticNavigationBarController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SFStaticNavigationBarController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BC7F4973E0DCAB9BF7E5262 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1BC7F4973E0DCAB9BF7E5262 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3DA21B744AAC2F42217915CC /* Pods-SFStaticNavigationBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFStaticNavigationBarController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFStaticNavigationBarController_Example/Pods-SFStaticNavigationBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		5D9B23DB1FF99F0200D854B2 /* ExampleRightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleRightViewController.swift; sourceTree = "<group>"; };
+		5D9B23DC1FF99F0200D854B2 /* ExampleCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCenterViewController.swift; sourceTree = "<group>"; };
+		5D9B23DD1FF99F0200D854B2 /* ExampleLeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleLeftViewController.swift; sourceTree = "<group>"; };
+		5D9B23DE1FF99F0200D854B2 /* ExampleAdditionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAdditionalViewController.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SFStaticNavigationBarController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFStaticNavigationBarController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SFStaticNavigationBarController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFStaticNavigationBarController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		81BCC653D7B27B65E9EF1EE3 /* Pods-SFStaticNavigationBarController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFStaticNavigationBarController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFStaticNavigationBarController_Tests/Pods-SFStaticNavigationBarController_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9490E78E68E96C0AC28C3638 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		BE1D5241E156B5031726F23F /* SFStaticNavigationBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SFStaticNavigationBarController.podspec; path = ../SFStaticNavigationBarController.podspec; sourceTree = "<group>"; };
+		9490E78E68E96C0AC28C3638 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		BE1D5241E156B5031726F23F /* SFStaticNavigationBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SFStaticNavigationBarController.podspec; path = ../SFStaticNavigationBarController.podspec; sourceTree = "<group>"; };
 		D4AFCD146421DEB3EB6F2DB6 /* Pods-SFStaticNavigationBarController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFStaticNavigationBarController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SFStaticNavigationBarController_Tests/Pods-SFStaticNavigationBarController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5563D0E4C7A69F54E36047B /* Pods-SFStaticNavigationBarController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFStaticNavigationBarController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SFStaticNavigationBarController_Example/Pods-SFStaticNavigationBarController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DF9245EA523FEDDD86AD2DE1 /* Pods_SFStaticNavigationBarController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SFStaticNavigationBarController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,9 +97,11 @@
 		607FACD21AFB9204008FA782 /* Example for SFStaticNavigationBarController */ = {
 			isa = PBXGroup;
 			children = (
+				5D9B23DE1FF99F0200D854B2 /* ExampleAdditionalViewController.swift */,
+				5D9B23DC1FF99F0200D854B2 /* ExampleCenterViewController.swift */,
+				5D9B23DD1FF99F0200D854B2 /* ExampleLeftViewController.swift */,
+				5D9B23DB1FF99F0200D854B2 /* ExampleRightViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -215,10 +221,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 42Z8BNDCEF;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 42Z8BNDCEF;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -248,7 +256,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -370,7 +377,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				5D9B23E11FF99F0300D854B2 /* ExampleLeftViewController.swift in Sources */,
+				5D9B23E01FF99F0300D854B2 /* ExampleCenterViewController.swift in Sources */,
+				5D9B23DF1FF99F0300D854B2 /* ExampleRightViewController.swift in Sources */,
+				5D9B23E21FF99F0300D854B2 /* ExampleAdditionalViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,14 +404,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -517,7 +519,9 @@
 			baseConfigurationReference = D5563D0E4C7A69F54E36047B /* Pods-SFStaticNavigationBarController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 42Z8BNDCEF;
 				INFOPLIST_FILE = SFStaticNavigationBarController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -532,7 +536,9 @@
 			baseConfigurationReference = 3DA21B744AAC2F42217915CC /* Pods-SFStaticNavigationBarController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 42Z8BNDCEF;
 				INFOPLIST_FILE = SFStaticNavigationBarController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -546,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4AFCD146421DEB3EB6F2DB6 /* Pods-SFStaticNavigationBarController_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 42Z8BNDCEF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -560,6 +567,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFStaticNavigationBarController_Example.app/SFStaticNavigationBarController_Example";
 			};
 			name = Debug;
 		};
@@ -567,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81BCC653D7B27B65E9EF1EE3 /* Pods-SFStaticNavigationBarController_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 42Z8BNDCEF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -577,6 +586,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFStaticNavigationBarController_Example.app/SFStaticNavigationBarController_Example";
 			};
 			name = Release;
 		};
