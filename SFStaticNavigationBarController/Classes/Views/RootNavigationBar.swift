@@ -17,7 +17,7 @@ class StaticNavigationBar: UINavigationBar {
         view.frame.origin.y = self.frame.height - view.frame.height
         view.layer.cornerRadius = 1
         view.layer.masksToBounds = true
-        view.backgroundColor = .green
+        view.backgroundColor = .darkGray
         return view
     }()
 
@@ -25,8 +25,8 @@ class StaticNavigationBar: UINavigationBar {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        tintColor = .yellow
-        barTintColor = .purple
+        tintColor = .black
+        barTintColor = .white
         isTranslucent = false
     }
     required init?(coder aDecoder: NSCoder) {
