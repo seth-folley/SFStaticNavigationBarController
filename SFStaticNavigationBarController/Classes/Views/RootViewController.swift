@@ -13,9 +13,9 @@ class RootViewController: UIViewController {
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let height = view.frame.height - statusBarHeight - 44
         view.frame.size.height = height
-        view.backgroundColor = .purple
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 3
+//        view.backgroundColor = .purple
+//        view.layer.borderColor = UIColor.white.cgColor
+//        view.layer.borderWidth = 3
         return view
     }()
 

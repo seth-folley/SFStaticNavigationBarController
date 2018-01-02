@@ -248,7 +248,7 @@ public class StaticNavigationController: UINavigationController, UINavigationBar
     }
 
     private func updatedNavigation() {
-        guard let activeVC = activeViewController else { return }
+        guard activeViewController != nil else { return }
         if activeViewControllerIsStale {
             switch activePosition {
             case .left:
