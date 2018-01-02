@@ -9,6 +9,7 @@
 - [ ] NavigationBar customization
 - [ ] Test navigation functions
 - [ ] Start writing tests
+- [ ] Make Pod Available via Cocoapods
 
 ## Example
 
