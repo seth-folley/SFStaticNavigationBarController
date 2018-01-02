@@ -5,6 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
 [![Platform](https://img.shields.io/cocoapods/p/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
 
+## TODO
+- [ ] NavigationBar customization
+- [ ] Test navigation functions
+- [ ] Start writing tests
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
