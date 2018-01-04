@@ -15,7 +15,7 @@ public enum StaticNavigationPosition {
 
 let kStaticNavIndicatorAnimationDuration = 0.3
 
-public class StaticNavigationController: UINavigationController, UINavigationBarDelegate {
+public class StaticNavigationController: UINavigationController {
 
     // MARK: Variables
     public var leftBarButtonItem: UIBarButtonItem? {
@@ -34,19 +34,16 @@ public class StaticNavigationController: UINavigationController, UINavigationBar
         }
     }
 
-    public var centerButton: UIButton? {
+    public var centerItem: UIView? {
         didSet {
-            centerButton?.addTarget(self, action: #selector(centerItemTapped), for: .touchUpInside)
-            rootViewController.navigationItem.titleView = centerButton
+            let tap = UITapGestureRecognizer(target: self, action: #selector(centerItemTapped))
+            centerItem?.addGestureRecognizer(tap)
+            rootViewController.navigationItem.titleView = centerItem
         }
     }
 
     public var leftViewController: UIViewController?
-    public var centerViewController = UIViewController() {
-        didSet {
-
-        }
-    }
+    public var centerViewController = UIViewController()
     public var rightViewController: UIViewController?
 
     private var activeViewController: UIViewController?
