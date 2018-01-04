@@ -6,7 +6,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
 
 ## TODO
-- [ x ] NavigationBar customization
 - [ ] Test navigation functions
 - [ ] Start writing tests
 - [ ] Make Pod Available via Cocoapods
