@@ -75,7 +75,7 @@ public class StaticNavigationController: UINavigationController {
     }
 
     private var viewControllerStack: [UIViewController] = [ ]
-    private var rootViewController = RootViewController()
+    private var rootViewController = SFRootViewController()
 
     // MARK: Lifecycle
     public convenience init(centerViewController: UIViewController, toolbarClass: AnyClass? = nil) {

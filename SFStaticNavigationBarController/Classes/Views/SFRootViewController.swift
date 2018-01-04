@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class SFRootViewController: UIViewController {
     private lazy var containerView: UIView = {
         let view = UIView(frame: self.view.bounds)
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
