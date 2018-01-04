@@ -40,6 +40,15 @@ class ExampleLeftViewController: UIViewController {
         setupAutoLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        staticNavigationController?.navBar?.sliderLength = 20
+        staticNavigationController?.navBar?.sliderWidth = 3
+        staticNavigationController?.navBar?.sliderMarginToEdge = 8.0
+        staticNavigationController?.navBar?.sliderCornerRadius = 1.0
+    }
+
     func setupAutoLayout() {
         vcLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         vcLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootVC.rightViewController = rightVC
         rootVC.leftBarButtonItem = leftItem
         rootVC.rightBarButtonItem = rightItem
-        rootVC.centerButton = centerItem
+        rootVC.centerItem = centerItem
 
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()

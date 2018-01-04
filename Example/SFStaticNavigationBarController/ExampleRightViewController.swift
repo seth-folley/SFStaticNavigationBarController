@@ -40,6 +40,20 @@ class ExampleRightViewController: UIViewController {
         setupAutoLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // set navigation bar attributes
+        navigationController?.navigationBar.barTintColor = .yellow
+        navigationController?.navigationBar.tintColor = .purple
+        staticNavigationController?.navBar?.sliderColor = .purple
+
+        // adjust bar items
+        staticNavigationController?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
+        staticNavigationController?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fastForward, target: nil, action: nil)
+        staticNavigationController?.centerItem = UIButton(type: .infoDark) // can be any UIView
+    }
+
     func setupAutoLayout() {
         vcLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         vcLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
