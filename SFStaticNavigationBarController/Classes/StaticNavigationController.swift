@@ -70,7 +70,7 @@ public class StaticNavigationController: UINavigationController {
         }
     }
 
-    private var navBar: StaticNavigationBar? {
+    public var navBar: StaticNavigationBar? {
         return navigationBar as? StaticNavigationBar
     }
 

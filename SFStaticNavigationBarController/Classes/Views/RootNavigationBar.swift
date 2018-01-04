@@ -8,16 +8,53 @@
 
 import UIKit
 
-class StaticNavigationBar: UINavigationBar {
+public class StaticNavigationBar: UINavigationBar {
+
+    // MARK: Slider vars
+    /// The length of the slider. Default value is 44.0
+    public var sliderLength: CGFloat = 44.0 {
+        didSet {
+            slider.frame.size.width = sliderLength
+        }
+    }
+
+    /// The thickness of the slider. Default value is 1.0
+    public var sliderWidth: CGFloat = 1.0 {
+        didSet {
+            slider.frame.size.height = sliderWidth
+        }
+    }
+
+    /// Defines if the slider is hidden. Default is false
+    public var isSliderHidden: Bool = false {
+        didSet {
+            slider.alpha = isSliderHidden ? 0.0 : 1.0
+        }
+    }
+
+    /// The color of the slider. Default is Dark Gray
+    public var sliderColor: UIColor = .darkGray {
+        didSet {
+            slider.backgroundColor = sliderColor
+        }
+    }
+
+    /// The corner radius for the slider. Default is 1.0
+    public var sliderCornerRadius: CGFloat = 1.0 {
+        didSet {
+            slider.layer.cornerRadius = sliderCornerRadius
+        }
+    }
+
     lazy var slider: UIView = {
         let view = UIView()
-        view.frame.size.width = 44
-        view.frame.size.height = 1
+        view.frame.size.width = sliderLength
+        view.frame.size.height = sliderWidth
         view.frame.origin.x = (self.frame.width - view.frame.width) / 2.0
         view.frame.origin.y = self.frame.height - view.frame.height
-        view.layer.cornerRadius = 1
+        view.layer.cornerRadius = sliderCornerRadius
         view.layer.masksToBounds = true
-        view.backgroundColor = .darkGray
+        view.backgroundColor = sliderColor
         return view
     }()
 
@@ -29,7 +66,7 @@ class StaticNavigationBar: UINavigationBar {
         barTintColor = .white
         isTranslucent = false
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
