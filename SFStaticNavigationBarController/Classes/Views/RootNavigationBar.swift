@@ -46,6 +46,9 @@ public class StaticNavigationBar: UINavigationBar {
         }
     }
 
+    /// The slider will come this close to the screens edge. Can be negative. Default is 0.0
+    public var sliderMarginToEdge: CGFloat = 0.0
+
     lazy var slider: UIView = {
         let view = UIView()
         view.frame.size.width = sliderLength
