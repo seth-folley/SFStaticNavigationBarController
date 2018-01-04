@@ -74,40 +74,4 @@ public class StaticNavigationBar: UINavigationBar {
     func addSubviews() {
         self.addSubview(slider)
     }
-
-    // MARK: Position Selectors
-    // TODO: Move slider center
-    func centerItemSelected() { print(#function)
-        move(to: .center)
-    }
-    // TODO: Move slider left
-    func leftItemSelected(){ print(#function)
-        move(to: .left)
-    }
-
-    // TODO: Move slider right
-    func rightItemSelected(){ print(#function)
-        move(to: .right)
-    }
-
-    private func move(to: StaticNavigationPosition, animated: Bool = true) {
-        var finalOriginX: CGFloat = 0
-
-        switch to {
-        case .left:
-            finalOriginX = 0
-            break
-        case .right:
-            finalOriginX = frame.width - (slider.frame.width)
-            break
-        case .center:
-            finalOriginX = (frame.width - slider.frame.width) * 0.5
-            break
-        }
-
-        UIView.animate(withDuration: animated ? 0.2 : 0.0) {
-            self.slider.frame.origin.x = finalOriginX
-            print("Navigation bar position view frame: ", self.slider.frame)
-        }
-    }
 }
