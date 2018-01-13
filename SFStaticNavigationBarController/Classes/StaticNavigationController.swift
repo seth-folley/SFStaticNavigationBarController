@@ -81,8 +81,6 @@ public class StaticNavigationController: UINavigationController {
     public convenience init(centerViewController: UIViewController, toolbarClass: AnyClass? = nil) {
         self.init(navigationBarClass: StaticNavigationBar.self, toolbarClass: toolbarClass)
 
-//        view.backgroundColor = UIColor.cyan
-
         self.centerViewController = centerViewController
         viewControllerStack.append(self.centerViewController)
         activeViewController = centerViewController
@@ -138,6 +136,8 @@ public class StaticNavigationController: UINavigationController {
         // Cannot pop vc if there is only 1 left
         guard viewControllerStack.count > 1 else { return nil }
 
+        let poppedVC = viewControllerStack.popLast()
+
         guard let viewController = viewControllerStack.last else { return nil }
 
         rootViewController.transition(to: viewController,
@@ -148,14 +148,10 @@ public class StaticNavigationController: UINavigationController {
                                         self.updatedNavigation()
                                     })
 
-        let lastVC = viewControllerStack.popLast()
-        // if popLast is nil, don't change activeViewController
-        if lastVC == nil {
-            activeViewController = lastVC ?? activeViewController
-            activeViewControllerIsStale = false
-        }
+        activeViewController = viewController
+        activeViewControllerIsStale = false
 
-        return lastVC
+        return poppedVC
     }
 
     // TODO: test popToRootViewController
