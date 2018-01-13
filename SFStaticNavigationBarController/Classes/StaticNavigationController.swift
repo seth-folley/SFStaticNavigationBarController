@@ -17,7 +17,7 @@ let kStaticNavIndicatorAnimationDuration = 0.3
 
 public class StaticNavigationController: UINavigationController {
 
-    // MARK: Variables
+    // MARK: Navigation Bar Items
     public var leftBarButtonItem: UIBarButtonItem? {
         didSet {
             leftBarButtonItem?.target = self
@@ -42,10 +42,12 @@ public class StaticNavigationController: UINavigationController {
         }
     }
 
+    // MARK: View Controller variables
     public var leftViewController: UIViewController?
     public var centerViewController = UIViewController()
     public var rightViewController: UIViewController?
 
+    // MARK: Active variables
     private var activeViewController: UIViewController?
     var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
@@ -59,6 +61,7 @@ public class StaticNavigationController: UINavigationController {
         }
     }
 
+    // MARK: Transition variables
     public var shouldAnimateTransitions = true
     var navigationAnimator = RootAnimator()
 
@@ -111,8 +114,7 @@ public class StaticNavigationController: UINavigationController {
     }
 
     // MARK: Navigation
-    // TODO: test pushViewController
-    override public func pushViewController(_ viewController: UIViewController, animated: Bool) { print(#function)
+    override public func pushViewController(_ viewController: UIViewController, animated: Bool) {
         guard activePosition != .center,
               activeViewController != viewController
             else {
@@ -132,8 +134,7 @@ public class StaticNavigationController: UINavigationController {
         activeViewControllerIsStale = false
     }
 
-    // TODO: test popToViewController
-    override public func popViewController(animated: Bool) -> UIViewController? { print(#function)
+    override public func popViewController(animated: Bool) -> UIViewController? {
         // Cannot pop vc if there is only 1 left
         guard viewControllerStack.count > 1 else { return nil }
 
@@ -159,8 +160,7 @@ public class StaticNavigationController: UINavigationController {
         return poppedVC
     }
 
-    // TODO: test popToRootViewController
-    override public func popToRootViewController(animated: Bool) -> [UIViewController]? { print(#function)
+    override public func popToRootViewController(animated: Bool) -> [UIViewController]? {
         if !activeViewControllerIsStale {
             activePosition = .center
         }
@@ -168,8 +168,7 @@ public class StaticNavigationController: UINavigationController {
         return popToViewController(centerViewController, animated: animated)
     }
 
-    // TODO: popToViewController
-    override public func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? { print(#function)
+    override public func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
 
         guard viewControllerStack.contains(viewController),
               let index = viewControllerStack.index(of: viewController)
@@ -200,8 +199,8 @@ public class StaticNavigationController: UINavigationController {
         return removedVCs
     }
 
-    // MARK: Navigation Bar Items' Selectors
-    @objc private func leftItemTapped() { print(#function)
+   // MARK: Navigation Bar Items' Selectors
+    @objc private func leftItemTapped() {
         guard let leftVC = leftViewController else { return }
         guard activeViewController != leftVC else { return }
 
@@ -217,7 +216,7 @@ public class StaticNavigationController: UINavigationController {
         }
     }
 
-    @objc private func centerItemTapped()  { print(#function)
+    @objc private func centerItemTapped()  {
         activePosition = .center
 
         navBar?.centerItemSelected()
@@ -225,7 +224,7 @@ public class StaticNavigationController: UINavigationController {
         let _ = popToRootViewController(animated: shouldAnimateTransitions)
     }
 
-    @objc private func rightItemTapped() { print(#function)
+    @objc private func rightItemTapped() {
         guard let rightVC = rightViewController else { return }
         guard activeViewController != rightVC else { return }
 
@@ -239,14 +238,6 @@ public class StaticNavigationController: UINavigationController {
             let _ = popToRootViewController(animated: shouldAnimateTransitions)
             return
         }
-    }
-
-    private func initialContainerViewFrame() -> CGRect {
-        var frame = CGRect.zero
-        frame.origin.y = 44 + UIApplication.shared.statusBarFrame.height
-        frame.size.width = view.bounds.width
-        frame.size.height = view.bounds.height - frame.origin.y
-        return frame
     }
 
     private func updatedNavigation() {

@@ -11,13 +11,13 @@ import UIKit
 extension StaticNavigationBar {
 
     // MARK: Position Selectors
-    func centerItemSelected() { print(#function)
+    func centerItemSelected() {
         moveSlider(to: .center)
     }
-    func leftItemSelected(){ print(#function)
+    func leftItemSelected(){
         moveSlider(to: .left)
     }
-    func rightItemSelected(){ print(#function)
+    func rightItemSelected(){
         moveSlider(to: .right)
     }
 
