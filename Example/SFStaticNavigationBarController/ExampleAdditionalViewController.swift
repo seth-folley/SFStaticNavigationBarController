@@ -7,54 +7,115 @@
 //
 
 import UIKit
+import Cartography
+import ChameleonFramework
 
 class ExampleAdditionalViewController: UIViewController {
 
     lazy var vcLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = self.title
+        label.backgroundColor = UIColor(randomFlatColorOf: .dark)
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.text = "Additional View Controller"
+        label.textAlignment = .center
+        label.textColor = .flatWhite
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
-    lazy var anotherVCButton: UIButton = {
+    lazy var pushVCButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("push VC", for: .normal)
+        button.setTitle("Push VC", for: .normal)
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.backgroundColor = .white
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.backgroundColor = .flatMagenta
+        button.addTarget(self, action: #selector(pushButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var presentVCButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Present VC", for: .normal)
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.backgroundColor = .flatCoffee
+        button.addTarget(self, action: #selector(presentButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var dismissVCButton: UIButton = {
+        let button = UIButton()
+        let title = presentingViewController == nil ? "Pop VC" : "Dismiss VC"
+        button.setTitle(title, for: .normal)
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.backgroundColor = .flatRedDark
+        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Additional VC"
+        view.backgroundColor = .flatWhite
         view.addSubview(vcLabel)
-        view.addSubview(anotherVCButton)
+        view.addSubview(pushVCButton)
+        view.addSubview(presentVCButton)
+        view.addSubview(dismissVCButton)
 
         setupAutoLayout()
     }
 
     func setupAutoLayout() {
-        vcLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        vcLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        vcLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        vcLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                         constant: -60).isActive = true
+        constrain(vcLabel) { view in
+            view.leading  == view.superview!.leading + 20
+            view.trailing == view.superview!.trailing - 20
+            view.height   == 60
+            view.top      == view.superview!.top + 50
+        }
 
-        anotherVCButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        anotherVCButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        anotherVCButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        anotherVCButton.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                                 constant: 60).isActive = true
+        constrain(pushVCButton) { view in
+            view.width   == 100
+            view.height  == 50
+            view.centerX == view.superview!.centerX * 0.5
+            view.bottom  == view.superview!.bottom - 75
+        }
+
+        constrain(presentVCButton) { view in
+            view.width   == 100
+            view.height  == 50
+            view.centerX == view.superview!.centerX * 1.5
+            view.bottom  == view.superview!.bottom - 75
+        }
+
+        constrain(dismissVCButton) { view in
+            view.width   == 100
+            view.height  == 50
+            view.centerX == view.superview!.centerX
+            view.bottom  == view.superview!.bottom - 10
+        }
     }
 
-    @objc private func buttonTapped() {
+    @objc private func pushButtonTapped() {
         navigationController?.pushViewController(ExampleAdditionalViewController(), animated: true)
+    }
+
+    @objc private func presentButtonTapped() {
+        present(ExampleAdditionalViewController(), animated: true)
+    }
+
+    @objc private func dismissButtonTapped() {
+        if let vc = presentingViewController {
+            vc.dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }

@@ -17,11 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let centerVC = ExampleCenterViewController()
-        centerVC.view.backgroundColor = .green
         let leftVC = ExampleLeftViewController()
-        leftVC.view.backgroundColor = .yellow
         let rightVC = ExampleRightViewController()
-        rightVC.view.backgroundColor = .cyan
 
         let leftItem = UIBarButtonItem(barButtonSystemItem: .trash, target: nil, action: nil)
         let rightItem = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)

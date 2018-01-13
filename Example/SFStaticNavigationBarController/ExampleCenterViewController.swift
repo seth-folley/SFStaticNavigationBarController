@@ -7,30 +7,37 @@
 //
 
 import UIKit
+import Cartography
+import ChameleonFramework
 
 class ExampleCenterViewController: UIViewController {
 
     lazy var vcLabel: UILabel = {
         let label = UILabel()
-        label.text = self.title
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .flatPlum
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.text = "Center View Controller"
+        label.textAlignment = .center
+        label.textColor = .flatWhite
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Center VC"
+        view.backgroundColor = .flatWhite
         view.addSubview(vcLabel)
-
         setupAutoLayout()
     }
 
     func setupAutoLayout() {
-        vcLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        vcLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        vcLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        vcLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                         constant: -60).isActive = true
+        constrain(vcLabel) { view in
+            view.leading  == view.superview!.leading + 20
+            view.trailing == view.superview!.trailing - 20
+            view.height   == 60
+            view.top      == view.superview!.top + 50
+        }
     }
 }

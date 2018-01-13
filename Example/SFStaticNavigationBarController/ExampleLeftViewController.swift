@@ -7,35 +7,54 @@
 //
 
 import UIKit
+import Cartography
+import ChameleonFramework
 
 class ExampleLeftViewController: UIViewController {
 
     lazy var vcLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = self.title
+        label.backgroundColor = .flatMintDark
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.text = "Left View Controller"
+        label.textAlignment = .center
+        label.textColor = .flatWhite
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
-    lazy var anotherVCButton: UIButton = {
+    lazy var pushVCButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("push VC", for: .normal)
+        button.setTitle("Push VC", for: .normal)
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.backgroundColor = .white
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.backgroundColor = .flatMagenta
+        button.addTarget(self, action: #selector(pushButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var presentVCButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Present VC", for: .normal)
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.backgroundColor = .flatCoffee
+        button.addTarget(self, action: #selector(presentButtonTapped), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Left VC"
+        view.backgroundColor = .flatWhite
         view.addSubview(vcLabel)
-        view.addSubview(anotherVCButton)
+        view.addSubview(pushVCButton)
+        view.addSubview(presentVCButton)
 
         setupAutoLayout()
     }
@@ -50,20 +69,33 @@ class ExampleLeftViewController: UIViewController {
     }
 
     func setupAutoLayout() {
-        vcLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        vcLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        vcLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        vcLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                         constant: -60).isActive = true
+        constrain(vcLabel) { view in
+            view.leading  == view.superview!.leading + 20
+            view.trailing == view.superview!.trailing - 20
+            view.height   == 60
+            view.top      == view.superview!.top + 50
+        }
 
-        anotherVCButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        anotherVCButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        anotherVCButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        anotherVCButton.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                                 constant: 60).isActive = true
+        constrain(pushVCButton) { view in
+            view.width   == 100
+            view.height  == 50
+            view.centerX == view.superview!.centerX * 0.5
+            view.bottom  == view.superview!.bottom - 50
+        }
+
+        constrain(presentVCButton) { view in
+            view.width   == 100
+            view.height  == 50
+            view.centerX == view.superview!.centerX * 1.5
+            view.bottom  == view.superview!.bottom - 50
+        }
     }
 
-    @objc private func buttonTapped() {
+    @objc private func pushButtonTapped() {
         navigationController?.pushViewController(ExampleAdditionalViewController(), animated: true)
+    }
+
+    @objc private func presentButtonTapped() {
+        present(ExampleAdditionalViewController(), animated: true)
     }
 }

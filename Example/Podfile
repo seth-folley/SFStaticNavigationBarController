@@ -3,6 +3,8 @@ use_frameworks!
 
 target 'SFStaticNavigationBarController_Example' do
   pod 'SFStaticNavigationBarController', :path => '../'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Cartography'
 
   target 'SFStaticNavigationBarController_Tests' do
     inherit! :search_paths
