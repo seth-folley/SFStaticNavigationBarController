@@ -13,7 +13,7 @@ extension Array where Element: UIViewController {
 
     @discardableResult
     mutating func removeAll(after index: Int) -> [UIViewController]? {
-        guard index > self.count - 1 else { return nil }
+        guard index < self.count - 1 else { return nil }
 
         var removedViewControllers: [UIViewController] = []
 

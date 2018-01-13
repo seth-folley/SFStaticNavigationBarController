@@ -50,6 +50,7 @@ public class StaticNavigationController: UINavigationController {
     var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
         didSet {
+            navBar?.moveSlider(to: activePosition)
             // only update push/pop directions if new value isn't center
             if activePosition != .center {
                 pushTransitionDirection = activePosition == .right ? .fromRight : .fromLeft
@@ -140,6 +141,10 @@ public class StaticNavigationController: UINavigationController {
 
         guard let viewController = viewControllerStack.last else { return nil }
 
+        if viewControllerStack.count == 1 {
+            activePosition = .center
+        }
+
         rootViewController.transition(to: viewController,
                                       direction: popTransitionDirection,
                                       animated: animated,
@@ -156,6 +161,10 @@ public class StaticNavigationController: UINavigationController {
 
     // TODO: test popToRootViewController
     override public func popToRootViewController(animated: Bool) -> [UIViewController]? { print(#function)
+        if !activeViewControllerIsStale {
+            activePosition = .center
+        }
+
         return popToViewController(centerViewController, animated: animated)
     }
 

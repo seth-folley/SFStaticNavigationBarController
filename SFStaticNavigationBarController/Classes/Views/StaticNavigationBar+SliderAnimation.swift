@@ -21,7 +21,7 @@ extension StaticNavigationBar {
         moveSlider(to: .right)
     }
 
-    private func moveSlider(to position: StaticNavigationPosition, animated: Bool = true) {
+    func moveSlider(to position: StaticNavigationPosition, animated: Bool = true) {
         var finalOriginX = frame.origin.x
 
         switch position {
