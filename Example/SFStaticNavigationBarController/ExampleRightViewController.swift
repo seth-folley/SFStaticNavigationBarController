@@ -67,12 +67,12 @@ class ExampleRightViewController: UIViewController {
         // set navigation bar attributes
         navigationController?.navigationBar.barTintColor = .flatOrangeDark
         navigationController?.navigationBar.tintColor = .flatWhite
-        staticNavigationController?.staticNavigationBar?.sliderColor = .flatLime
+        staticNavigationBarController?.staticNavigationBar?.sliderColor = .flatLime
 
         // adjust bar items
-        staticNavigationController?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
-        staticNavigationController?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fastForward, target: nil, action: nil)
-        staticNavigationController?.centerItem = UIButton(type: .infoDark) // can be any UIView
+        staticNavigationBarController?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
+        staticNavigationBarController?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fastForward, target: nil, action: nil)
+        staticNavigationBarController?.centerItem = UIButton(type: .infoDark) // can be any UIView
     }
 
     func setupAutoLayout() {

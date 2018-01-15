@@ -15,7 +15,7 @@ public enum StaticNavigationPosition {
 
 let kStaticNavIndicatorAnimationDuration = 0.3
 
-public class StaticNavigationController: UINavigationController {
+public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Navigation Bar Items
     public var leftBarButtonItem: UIBarButtonItem? {

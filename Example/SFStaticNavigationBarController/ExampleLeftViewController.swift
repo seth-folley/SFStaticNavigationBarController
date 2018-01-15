@@ -65,12 +65,12 @@ class ExampleLeftViewController: UIViewController {
         // set navigation bar attributes
         navigationController?.navigationBar.barTintColor = .flatMintDark
         navigationController?.navigationBar.tintColor = .flatWhite
-        staticNavigationController?.staticNavigationBar?.sliderColor = .flatRed
+        staticNavigationBarController?.staticNavigationBar?.sliderColor = .flatRed
 
-        staticNavigationController?.staticNavigationBar?.sliderLength = 20
-        staticNavigationController?.staticNavigationBar?.sliderWidth = 3
-        staticNavigationController?.staticNavigationBar?.sliderMarginToEdge = 8.0
-        staticNavigationController?.staticNavigationBar?.sliderCornerRadius = 1.0
+        staticNavigationBarController?.staticNavigationBar?.sliderLength = 20
+        staticNavigationBarController?.staticNavigationBar?.sliderWidth = 3
+        staticNavigationBarController?.staticNavigationBar?.sliderMarginToEdge = 8.0
+        staticNavigationBarController?.staticNavigationBar?.sliderCornerRadius = 1.0
     }
 
     func setupAutoLayout() {

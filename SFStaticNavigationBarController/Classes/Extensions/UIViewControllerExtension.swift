@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
-    var staticNavigationController: StaticNavigationController? {
-        return navigationController as? StaticNavigationController
+    var staticNavigationBarController: StaticNavigationBarController? {
+        return navigationController as? StaticNavigationBarController
     }
 }

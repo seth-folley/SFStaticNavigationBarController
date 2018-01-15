@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rightItem = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
         let centerItem = UIButton(type: .contactAdd)
 
-        let rootVC = StaticNavigationController(centerViewController: centerVC)
+        let rootVC = StaticNavigationBarController(centerViewController: centerVC)
         rootVC.leftViewController = leftVC
         rootVC.rightViewController = rightVC
         rootVC.leftBarButtonItem = leftItem
