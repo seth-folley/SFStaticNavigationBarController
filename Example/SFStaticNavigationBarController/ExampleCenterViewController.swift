@@ -32,6 +32,15 @@ class ExampleCenterViewController: UIViewController {
         setupAutoLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // set navigation bar attributes
+        navigationController?.navigationBar.barTintColor = .flatWhite
+        navigationController?.navigationBar.tintColor = .flatBlack
+        staticNavigationController?.staticNavigationBar?.sliderColor = .darkGray
+    }
+
     func setupAutoLayout() {
         constrain(vcLabel) { view in
             view.leading  == view.superview!.leading + 20

@@ -65,9 +65,9 @@ class ExampleRightViewController: UIViewController {
         view.backgroundColor = .flatWhite
 
         // set navigation bar attributes
-        navigationController?.navigationBar.barTintColor = .yellow
-        navigationController?.navigationBar.tintColor = .purple
-        staticNavigationController?.staticNavigationBar?.sliderColor = .purple
+        navigationController?.navigationBar.barTintColor = .flatOrangeDark
+        navigationController?.navigationBar.tintColor = .flatWhite
+        staticNavigationController?.staticNavigationBar?.sliderColor = .flatLime
 
         // adjust bar items
         staticNavigationController?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)

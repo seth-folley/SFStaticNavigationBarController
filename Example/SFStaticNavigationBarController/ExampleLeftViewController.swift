@@ -62,6 +62,11 @@ class ExampleLeftViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        // set navigation bar attributes
+        navigationController?.navigationBar.barTintColor = .flatMintDark
+        navigationController?.navigationBar.tintColor = .flatWhite
+        staticNavigationController?.staticNavigationBar?.sliderColor = .flatRed
+
         staticNavigationController?.staticNavigationBar?.sliderLength = 20
         staticNavigationController?.staticNavigationBar?.sliderWidth = 3
         staticNavigationController?.staticNavigationBar?.sliderMarginToEdge = 8.0
