@@ -5,8 +5,8 @@
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
 )](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
-[![License](https://img.shields.io/cocoapods/l/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
-[![Platform](https://img.shields.io/cocoapods/p/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+)](http://mit-license.org)
 
 ## Description
 `SFStaticNavigationBarController` is a custom `UINavigationController` with a static navigation bar.
@@ -31,6 +31,8 @@ pod 'SFStaticNavigationBarController'
 - [ ] Write Tests
 - [ ] Ability to set different slider sizes and margins for left, center, and right positions
 - [ ] Animation for navigation bar color changes
+- [ ] gifs for README
+- [ ] improve README
 
 ## Author
 crystalSETH, sethfolley@gmail.com
