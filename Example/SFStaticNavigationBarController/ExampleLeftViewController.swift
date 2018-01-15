@@ -62,10 +62,10 @@ class ExampleLeftViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        staticNavigationController?.updateSliderLength(with: 66.0)
-//        staticNavigationController?.staticNavigationBar?.sliderWidth = 3
-//        staticNavigationController?.staticNavigationBar?.sliderMarginToEdge = 8.0
-//        staticNavigationController?.staticNavigationBar?.sliderCornerRadius = 1.0
+        staticNavigationController?.staticNavigationBar?.sliderLength = 20
+        staticNavigationController?.staticNavigationBar?.sliderWidth = 3
+        staticNavigationController?.staticNavigationBar?.sliderMarginToEdge = 8.0
+        staticNavigationController?.staticNavigationBar?.sliderCornerRadius = 1.0
     }
 
     func setupAutoLayout() {

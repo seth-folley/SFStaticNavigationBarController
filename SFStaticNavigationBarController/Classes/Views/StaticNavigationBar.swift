@@ -51,13 +51,13 @@ public class StaticNavigationBar: UINavigationBar {
 
     lazy var slider: UIView = {
         let view = UIView()
-        view.frame.size.width = sliderLength
-        view.frame.size.height = sliderWidth
+        view.frame.size.width = self.sliderLength
+        view.frame.size.height = self.sliderWidth
         view.frame.origin.x = (self.frame.width - view.frame.width) / 2.0
         view.frame.origin.y = self.frame.height - view.frame.height
-        view.layer.cornerRadius = sliderCornerRadius
+        view.layer.cornerRadius = self.sliderCornerRadius
         view.layer.masksToBounds = true
-        view.backgroundColor = sliderColor
+        view.backgroundColor = self.sliderColor
         return view
     }()
 
