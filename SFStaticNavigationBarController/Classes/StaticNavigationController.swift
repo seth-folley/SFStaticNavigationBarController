@@ -52,7 +52,7 @@ public class StaticNavigationController: UINavigationController {
     var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
         didSet {
-            navBar?.moveSlider(to: activePosition)
+            staticNavigationBar?.moveSlider(to: activePosition)
             // only update push/pop directions if new value isn't center
             if activePosition != .center {
                 pushTransitionDirection = activePosition == .right ? .fromRight : .fromLeft
@@ -74,8 +74,10 @@ public class StaticNavigationController: UINavigationController {
         }
     }
 
-    public var navBar: StaticNavigationBar? {
-        return navigationBar as? StaticNavigationBar
+    public var staticNavigationBar: StaticNavigationBar? {
+        get {
+            return navigationBar as? StaticNavigationBar
+        }
     }
 
     private var viewControllerStack: [UIViewController] = [ ]
@@ -110,7 +112,7 @@ public class StaticNavigationController: UINavigationController {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-        navBar?.addSubviews()
+        staticNavigationBar?.addSubviews()
     }
 
     // MARK: Navigation
@@ -204,7 +206,7 @@ public class StaticNavigationController: UINavigationController {
         guard let leftVC = leftViewController else { return }
         guard activeViewController != leftVC else { return }
 
-        navBar?.leftItemSelected()
+        staticNavigationBar?.leftItemSelected()
 
         if activePosition == .left {
             let _ = popToViewController(leftVC, animated: shouldAnimateTransitions)
@@ -219,7 +221,7 @@ public class StaticNavigationController: UINavigationController {
     @objc private func centerItemTapped()  {
         activePosition = .center
 
-        navBar?.centerItemSelected()
+        staticNavigationBar?.centerItemSelected()
 
         let _ = popToRootViewController(animated: shouldAnimateTransitions)
     }
@@ -228,7 +230,7 @@ public class StaticNavigationController: UINavigationController {
         guard let rightVC = rightViewController else { return }
         guard activeViewController != rightVC else { return }
 
-        navBar?.rightItemSelected()
+        staticNavigationBar?.rightItemSelected()
 
         if activePosition == .right {
             let _ = popToViewController(rightVC, animated: shouldAnimateTransitions)
