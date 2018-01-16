@@ -69,6 +69,11 @@ class ExampleRightViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .flatWhite
         staticNavigationBarController?.staticNavigationBar?.sliderColor = .flatLime
 
+        staticNavigationBarController?.staticNavigationBar?.sliderLength = 44.0
+        staticNavigationBarController?.staticNavigationBar?.sliderWidth = 8.0
+        staticNavigationBarController?.staticNavigationBar?.sliderMarginToEdge = 2.0
+        staticNavigationBarController?.staticNavigationBar?.sliderCornerRadius = 4.0
+
         // adjust bar items
         staticNavigationBarController?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
         staticNavigationBarController?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fastForward, target: nil, action: nil)

@@ -52,7 +52,6 @@ public class StaticNavigationBarController: UINavigationController {
     var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
         didSet {
-            staticNavigationBar?.moveSlider(to: activePosition)
             // only update push/pop directions if new value isn't center
             if activePosition != .center {
                 pushTransitionDirection = activePosition == .right ? .fromRight : .fromLeft
@@ -132,6 +131,8 @@ public class StaticNavigationBarController: UINavigationController {
 
         viewControllerStack.append(viewController)
 
+        staticNavigationBar?.moveSlider(to: activePosition)
+
         activeViewController = viewController
         activeViewControllerIsStale = false
     }
@@ -155,6 +156,8 @@ public class StaticNavigationBarController: UINavigationController {
                                       completion:  { _ in
                                         self.updatedNavigation()
                                     })
+
+        staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
         activeViewControllerIsStale = false
@@ -190,6 +193,8 @@ public class StaticNavigationBarController: UINavigationController {
                                           completion: { _ in
                                             self.updatedNavigation()
                                        })
+
+            staticNavigationBar?.moveSlider(to: activePosition)
 
             activeViewController = viewController
         } else {

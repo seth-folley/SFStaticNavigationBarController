@@ -12,42 +12,24 @@ public class StaticNavigationBar: UINavigationBar {
 
     // MARK: Slider vars
     /// The length of the slider. Default value is 44.0
-    public var sliderLength: CGFloat = 44.0 {
-        didSet {
-            slider.frame.size.width = sliderLength
-        }
-    }
+    public var sliderLength: CGFloat = 44.0
 
     /// The thickness of the slider. Default value is 1.0
-    public var sliderWidth: CGFloat = 1.0 {
-        didSet {
-            slider.frame.size.height = sliderWidth
-        }
-    }
+    public var sliderWidth: CGFloat = 1.0
 
     /// Defines if the slider is hidden. Default is false
-    public var isSliderHidden: Bool = false {
-        didSet {
-            slider.alpha = isSliderHidden ? 0.0 : 1.0
-        }
-    }
+    public var isSliderHidden: Bool = false
 
     /// The color of the slider. Default is Dark Gray
-    public var sliderColor: UIColor = .darkGray {
-        didSet {
-            slider.backgroundColor = sliderColor
-        }
-    }
+    public var sliderColor: UIColor = .darkGray
 
     /// The corner radius for the slider. Default is 1.0
-    public var sliderCornerRadius: CGFloat = 1.0 {
-        didSet {
-            slider.layer.cornerRadius = sliderCornerRadius
-        }
-    }
+    public var sliderCornerRadius: CGFloat = 1.0
 
     /// The slider will come this close to the screens edge. Can be negative. Default is 0.0
     public var sliderMarginToEdge: CGFloat = 0.0
+
+    var currentSliderPosition = StaticNavigationPosition.center
 
     lazy var slider: UIView = {
         let view = UIView()

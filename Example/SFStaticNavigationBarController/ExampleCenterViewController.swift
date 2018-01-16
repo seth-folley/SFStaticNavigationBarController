@@ -39,6 +39,11 @@ class ExampleCenterViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .flatWhite
         navigationController?.navigationBar.tintColor = .flatBlack
         staticNavigationBarController?.staticNavigationBar?.sliderColor = .darkGray
+
+        staticNavigationBarController?.staticNavigationBar?.sliderLength = 60
+        staticNavigationBarController?.staticNavigationBar?.sliderWidth = 8
+        staticNavigationBarController?.staticNavigationBar?.sliderMarginToEdge = 2.0
+        staticNavigationBarController?.staticNavigationBar?.sliderCornerRadius = 4.0
     }
 
     func setupAutoLayout() {
