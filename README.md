@@ -28,11 +28,12 @@ it, simply add the following line to your Podfile:
 pod 'SFStaticNavigationBarController'
 ```
 ## TODO
+- [ ] gifs for README
+- [ ] improve README
 - [ ] Write Tests
 - [ ] Ability to set different slider sizes and margins for left, center, and right positions
 - [ ] Animation for navigation bar color changes
-- [ ] gifs for README
-- [ ] improve README
+- [ ] Different slider animations
 
 ## Author
 crystalSETH, sethfolley@gmail.com
