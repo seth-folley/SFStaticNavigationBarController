@@ -184,7 +184,7 @@ public class StaticNavigationBarController: UINavigationController {
               let index = viewControllerStack.index(of: viewController)
             else { return nil }
 
-
+        let removedVCs = viewControllerStack.removeAll(after: index)
 
         if activeViewController != viewController {
             var transitionDirection = popTransitionDirection
@@ -206,8 +206,6 @@ public class StaticNavigationBarController: UINavigationController {
         } else {
             updatedNavigation()
         }
-
-        let removedVCs = viewControllerStack.removeAll(after: index)
 
         return removedVCs
     }
