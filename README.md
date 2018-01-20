@@ -18,7 +18,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 - iOS 9.0+
-- Swift 3
+- Swift 3.2
 
 ## Installation
 SFStaticNavigationBarController is available through [CocoaPods](http://cocoapods.org). To install
@@ -31,7 +31,6 @@ pod 'SFStaticNavigationBarController'
 - [ ] gifs for README
 - [ ] improve README
 - [ ] Write Tests
-- [ ] Ability to set different slider sizes and margins for left, center, and right positions
 - [ ] Animation for navigation bar color changes
 - [ ] Different slider animations
 
