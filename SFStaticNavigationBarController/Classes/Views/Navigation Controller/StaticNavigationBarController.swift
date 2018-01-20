@@ -123,16 +123,15 @@ public class StaticNavigationBarController: UINavigationController {
                 return
         }
 
+        // Aminations
         rootViewController.transition(to: viewController,
                                       direction: pushTransitionDirection,
                                       animated: animated,
                                       duration: transitionDuration,
                                       completion: nil)
-
-        viewControllerStack.append(viewController)
-
         staticNavigationBar?.moveSlider(to: activePosition)
 
+        viewControllerStack.append(viewController)
         activeViewController = viewController
         activeViewControllerIsStale = false
     }
@@ -149,14 +148,14 @@ public class StaticNavigationBarController: UINavigationController {
             activePosition = .center
         }
 
+        // Animations
         rootViewController.transition(to: viewController,
-                                      direction: popTransitionDirection,
-                                      animated: animated,
-                                      duration: transitionDuration,
-                                      completion:  { _ in
-                                        self.updatedNavigation()
-                                    })
-
+       /*                           */direction: popTransitionDirection,
+       /*                           */animated: animated,
+       /*      ^--------^           */duration: transitionDuration,
+       /*       |｡◕‿‿◕｡|            */completion:  { _ in
+       /*                             */self.updatedNavigation()
+       /*                 nyan cat */})
         staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
@@ -186,6 +185,8 @@ public class StaticNavigationBarController: UINavigationController {
             if activeViewControllerIsStale {
                 transitionDirection = pushTransitionDirection
             }
+
+            // Animations
             rootViewController.transition(to: viewController,
                                           direction: transitionDirection,
                                           animated: animated,
@@ -193,7 +194,6 @@ public class StaticNavigationBarController: UINavigationController {
                                           completion: { _ in
                                             self.updatedNavigation()
                                        })
-
             staticNavigationBar?.moveSlider(to: activePosition)
 
             activeViewController = viewController
