@@ -28,16 +28,11 @@ class RootAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         containerView.addSubview(toVC.view)
         containerView.bringSubview(toFront: toVC.view)
-        
-        toVC.beginAppearanceTransition(true, animated: duration > 0)
-        fromVC.beginAppearanceTransition(false, animated: duration > 0)
-        
+
         UIView.animate(withDuration: duration, animations: {
             toVC.view.frame = transitionContext.finalFrame(for: toVC)
             fromVC.view.frame = transitionContext.finalFrame(for: fromVC)
         }) { _ in
-            toVC.endAppearanceTransition()
-            fromVC.endAppearanceTransition()
             transitionContext.completeTransition(true)
         }
     }
