@@ -26,7 +26,6 @@ public class StaticNavigationBar: UINavigationBar {
             origin.x = self.frame.width - sldr.rightSize.width - sldr.rightMargin
         }
 
-        print("🤪 Slider origin: ", origin)
         return origin
     }
 
@@ -42,7 +41,6 @@ public class StaticNavigationBar: UINavigationBar {
             size = self.slider.rightSize
         }
 
-        print("🤪 Slider size: ", size)
         return size
     }
 
