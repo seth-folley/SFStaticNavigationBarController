@@ -11,33 +11,58 @@ import UIKit
 public class StaticNavigationBar: UINavigationBar {
 
     // MARK: Slider vars
-    /// The length of the slider. Default value is 44.0
-    public var sliderLength: CGFloat = 44.0
+    var sliderOrigin: CGPoint {
+        var origin = CGPoint.zero
+        let sldr = self.slider
 
-    /// The thickness of the slider. Default value is 1.0
-    public var sliderWidth: CGFloat = 1.0
+        origin.y = self.frame.height - self.sliderSize.height
 
-    /// Defines if the slider is hidden. Default is false
-    public var isSliderHidden: Bool = false
+        switch self.currentSliderPosition{
+        case .left:
+            origin.x = sldr.leftMargin
+        case .center:
+            origin.x = (self.frame.width - self.sliderSize.width) / 2.0
+        case.right:
+            origin.x = self.frame.width - sldr.rightSize.width - sldr.rightMargin
+        }
+
+        print("🤪 Slider origin: ", origin)
+        return origin
+    }
+
+    var sliderSize: CGSize {
+        var size = CGSize.zero
+
+        switch self.currentSliderPosition {
+        case .left:
+            size = self.slider.leftSize
+        case .center:
+            size = self.slider.centerSize
+        case .right:
+            size = self.slider.rightSize
+        }
+
+        print("🤪 Slider size: ", size)
+        return size
+    }
 
     /// The color of the slider. Default is Dark Gray
+    public var isSliderHidden = false
     public var sliderColor: UIColor = .darkGray
 
     /// The corner radius for the slider. Default is 1.0
-    public var sliderCornerRadius: CGFloat = 1.0
-
-    /// The slider will come this close to the screens edge. Can be negative. Default is 0.0
-    public var sliderMarginToEdge: CGFloat = 0.0
+    var sliderCornerRadius: CGFloat {
+        return self.sliderView.frame.height / 2.0
+    }
 
     var currentSliderPosition = StaticNavigationPosition.center
 
-    lazy var slider: UIView = {
-        let view = UIView()
-        view.frame.size.width = self.sliderLength
-        view.frame.size.height = self.sliderWidth
-        view.frame.origin.x = (self.frame.width - view.frame.width) / 2.0
-        view.frame.origin.y = self.frame.height - view.frame.height
-        view.layer.cornerRadius = self.sliderCornerRadius
+    public var slider = Slider()
+
+    public lazy var sliderView: UIView = {
+        let view = UIView(frame: .zero)
+        view.frame.size = self.sliderSize
+        view.frame.origin = self.sliderOrigin
         view.layer.masksToBounds = true
         view.backgroundColor = self.sliderColor
         return view
@@ -50,6 +75,8 @@ public class StaticNavigationBar: UINavigationBar {
         tintColor = .black
         barTintColor = .white
         isTranslucent = false
+
+        sliderView.layer.cornerRadius = sliderCornerRadius
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -57,6 +84,6 @@ public class StaticNavigationBar: UINavigationBar {
 
     // MARK: UI
     func addSubviews() {
-        self.addSubview(slider)
+        self.addSubview(sliderView)
     }
 }

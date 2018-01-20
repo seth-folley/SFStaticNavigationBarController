@@ -21,44 +21,25 @@ extension StaticNavigationBar {
         moveSlider(to: .right)
     }
 
-    var sliderFinalOriginX: CGFloat {
-        var finalOriginX = frame.origin.x
-
-        switch currentSliderPosition {
-        case .left:
-            finalOriginX += sliderMarginToEdge
-            break
-        case .right:
-            finalOriginX = frame.width - sliderLength - sliderMarginToEdge
-            break
-        case .center:
-            finalOriginX = (frame.width - sliderLength) * 0.5
-            break
-        }
-
-        return finalOriginX
-    }
-
     func moveSlider(to position: StaticNavigationPosition, animated: Bool = true) {
         currentSliderPosition = position
 
         UIView.animate(withDuration: animated ? 0.2 : 0.0) {
-            self.slider.isHidden = self.isSliderHidden
-            self.slider.frame.size.width = self.sliderLength
-            self.slider.frame.size.height = self.sliderWidth
-            self.slider.layer.cornerRadius = self.sliderCornerRadius
-            self.slider.backgroundColor = self.sliderColor
-            self.slider.frame.origin.x = self.sliderFinalOriginX
+            self.sliderView.isHidden = self.isSliderHidden
+            self.sliderView.frame.origin = self.sliderOrigin
+            self.sliderView.frame.size = self.sliderSize
+            self.sliderView.layer.cornerRadius = self.sliderCornerRadius
+            self.sliderView.backgroundColor = self.sliderColor
         }
     }
 
     public func updateSliderDetails(animated: Bool, duration: Double = 0.3) {
         UIView.animate(withDuration: animated ? duration : 0.0) {
-            self.slider.isHidden = self.isSliderHidden
-            self.slider.frame.size.width = self.sliderLength
-            self.slider.frame.size.height = self.sliderWidth
-            self.slider.layer.cornerRadius = self.sliderCornerRadius
-            self.slider.backgroundColor = self.sliderColor
+            self.sliderView.isHidden = self.isSliderHidden
+            self.sliderView.frame.origin = self.sliderOrigin
+            self.sliderView.frame.size = self.sliderSize
+            self.sliderView.layer.cornerRadius = self.sliderCornerRadius
+            self.sliderView.backgroundColor = self.sliderColor
         }
     }
 }

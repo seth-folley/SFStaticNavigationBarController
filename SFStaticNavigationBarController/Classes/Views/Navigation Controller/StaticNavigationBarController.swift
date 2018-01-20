@@ -114,6 +114,12 @@ public class StaticNavigationBarController: UINavigationController {
         staticNavigationBar?.addSubviews()
     }
 
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        staticNavigationBar?.updateSliderDetails(animated: false)
+    }
+
     // MARK: Navigation
     override public func pushViewController(_ viewController: UIViewController, animated: Bool) {
         guard activePosition != .center,
