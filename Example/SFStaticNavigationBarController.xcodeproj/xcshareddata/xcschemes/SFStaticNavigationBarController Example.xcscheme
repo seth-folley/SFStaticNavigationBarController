@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0900"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -50,6 +50,20 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "SFStaticNavigationBarController_Tests.xctest"
                BlueprintName = "SFStaticNavigationBarController_Tests"
+               ReferencedContainer = "container:SFStaticNavigationBarController.xcodeproj">
+            </BuildableReference>
+            <LocationScenarioReference
+               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+               referenceType = "1">
+            </LocationScenarioReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5DF598A52013D76700C89634"
+               BuildableName = "SFStaticNavigationBarControllerTests.xctest"
+               BlueprintName = "SFStaticNavigationBarControllerTests"
                ReferencedContainer = "container:SFStaticNavigationBarController.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -8,7 +8,7 @@ target 'SFStaticNavigationBarController_Example' do
 
   target 'SFStaticNavigationBarController_Tests' do
     inherit! :search_paths
-
+    pod 'SFStaticNavigationBarController', :path => '../'
     
   end
 end
