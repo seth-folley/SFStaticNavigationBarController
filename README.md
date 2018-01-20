@@ -1,11 +1,11 @@
 # SFStaticNavigationBarController
 
-[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat-square
 )](https://developer.apple.com/iphone/index.action)
-[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat-square
 )](https://developer.apple.com/swift)
-[![Version](https://img.shields.io/cocoapods/v/SFStaticNavigationBarController.svg?style=flat)](http://cocoapods.org/pods/SFStaticNavigationBarController)
-[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+[![Version](https://img.shields.io/cocoapods/v/SFStaticNavigationBarController.svg?style=flat-square)](http://cocoapods.org/pods/SFStaticNavigationBarController)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square
 )](http://mit-license.org)
 
 ## Description
