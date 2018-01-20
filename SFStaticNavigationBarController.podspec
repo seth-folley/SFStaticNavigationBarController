@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SFStaticNavigationBarController'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'A a custom UINavigationController with a static navigation bar.'
 
   s.description      = <<-DESC
