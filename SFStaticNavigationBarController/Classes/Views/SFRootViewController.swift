@@ -13,9 +13,6 @@ class SFRootViewController: UIViewController {
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let height = view.frame.height - statusBarHeight - 44
         view.frame.size.height = height
-//        view.backgroundColor = .purple
-//        view.layer.borderColor = UIColor.white.cgColor
-//        view.layer.borderWidth = 3
         return view
     }()
 
@@ -25,7 +22,6 @@ class SFRootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .brown
         view.addSubview(containerView)
 
         if let view = currentView {
@@ -54,11 +50,11 @@ class SFRootViewController: UIViewController {
         let transitionContext = RootTransitionContext(from: fromVC, to: viewController, direction: direction)
         transitionContext.isAnimated = animated
         transitionContext.isInteractive = false
-        transitionContext.completionBlock = { didComplete in
+        transitionContext.completionBlock = { [weak self] didComplete in
             fromVC.view.removeFromSuperview()
             fromVC.removeFromParentViewController()
             viewController.didMove(toParentViewController: self)
-            self.transitionAnimator.animationEnded(didComplete)
+            self?.transitionAnimator.animationEnded(didComplete)
             completion?(didComplete)
         }
 

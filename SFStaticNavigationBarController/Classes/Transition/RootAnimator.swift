@@ -75,9 +75,9 @@ class RootAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 middleVC.view.frame = middleFinalFrame
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
             })
-        }) /* completion: */ { _ in
+        }) /* completion: */ { [weak self] _ in
             transitionContext.completeTransition(true)
-            self.middleViewController = nil
+            self?.middleViewController = nil
         }
     }
 
