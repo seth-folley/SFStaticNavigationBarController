@@ -16,12 +16,13 @@ enum TransitionDirection {
 
 class RootTransitionContext: NSObject, UIViewControllerContextTransitioning {
     var viewControllers: [UITransitionContextViewControllerKey:  UIViewController]
+    var middleViewController: UIViewController?
     var containerView: UIView
     var isAnimated: Bool = true
-    var isInteractive: Bool = false//{ get } // This indicates whether the transition is currently interactive.
-    var transitionWasCancelled: Bool = false//{ get }
-    var presentationStyle: UIModalPresentationStyle = .custom //{ get }
-    var targetTransform: CGAffineTransform = CGAffineTransform()//{ get }
+    var isInteractive: Bool = false
+    var transitionWasCancelled: Bool = false
+    var presentationStyle: UIModalPresentationStyle = .custom
+    var targetTransform: CGAffineTransform = CGAffineTransform()
 
     var completionBlock: ((_ didComplete: Bool) -> Void)? = nil
     

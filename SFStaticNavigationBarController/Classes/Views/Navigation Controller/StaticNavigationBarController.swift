@@ -49,7 +49,6 @@ public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Active variables
     private var activeViewController: UIViewController?
-    var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
         didSet {
             // only update push/pop directions if new value isn't center
@@ -62,16 +61,11 @@ public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Transition variables
     public var shouldAnimateTransitions = true
-    var navigationAnimator = RootAnimator()
 
     private var pushTransitionDirection = TransitionDirection.fromLeft
     private var popTransitionDirection = TransitionDirection.fromLeft
 
-    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration {
-        didSet {
-            self.navigationAnimator.duration = transitionDuration
-        }
-    }
+    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration
 
     public var staticNavigationBar: StaticNavigationBar? {
         get {
@@ -129,7 +123,6 @@ public class StaticNavigationBarController: UINavigationController {
                 return
         }
 
-        // Aminations
         rootViewController.transition(to: viewController,
                                       direction: pushTransitionDirection,
                                       animated: animated,
@@ -139,7 +132,6 @@ public class StaticNavigationBarController: UINavigationController {
 
         viewControllerStack.append(viewController)
         activeViewController = viewController
-        activeViewControllerIsStale = false
     }
 
     override public func popViewController(animated: Bool) -> UIViewController? {
@@ -154,58 +146,39 @@ public class StaticNavigationBarController: UINavigationController {
             activePosition = .center
         }
 
-        // Animations
         rootViewController.transition(to: viewController,
        /*                           */direction: popTransitionDirection,
        /*                           */animated: animated,
        /*      ^--------^           */duration: transitionDuration,
-       /*       |｡◕‿‿◕｡|            */completion:  { _ in
-       /*                             */self.updatedNavigation()
-       /*                 nyan cat */})
+       /*       |｡◕‿‿◕｡|            */completion: nil)
         staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
-        activeViewControllerIsStale = false
 
         return poppedVC
     }
 
     override public func popToRootViewController(animated: Bool) -> [UIViewController]? {
-        if !activeViewControllerIsStale {
-            activePosition = .center
-        }
+        activePosition = .center
 
         return popToViewController(centerViewController, animated: animated)
     }
 
     override public func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
-
         guard viewControllerStack.contains(viewController),
               let index = viewControllerStack.index(of: viewController)
             else { return nil }
 
         let removedVCs = viewControllerStack.removeAll(after: index)
 
-        if activeViewController != viewController {
-            var transitionDirection = popTransitionDirection
-            if activeViewControllerIsStale {
-                transitionDirection = pushTransitionDirection
-            }
+        rootViewController.transition(to: viewController,
+                                      direction: popTransitionDirection,
+                                      animated: animated,
+                                      duration: transitionDuration,
+                                      completion: nil)
+        staticNavigationBar?.moveSlider(to: activePosition)
 
-            // Animations
-            rootViewController.transition(to: viewController,
-                                          direction: transitionDirection,
-                                          animated: animated,
-                                          duration: transitionDuration,
-                                          completion: { _ in
-                                            self.updatedNavigation()
-                                       })
-            staticNavigationBar?.moveSlider(to: activePosition)
-
-            activeViewController = viewController
-        } else {
-            updatedNavigation()
-        }
+        activeViewController = viewController
 
         return removedVCs
     }
@@ -217,14 +190,20 @@ public class StaticNavigationBarController: UINavigationController {
 
         staticNavigationBar?.leftItemSelected()
 
-        if activePosition == .left {
-            let _ = popToViewController(leftVC, animated: shouldAnimateTransitions)
-        } else {
-            activePosition = .left
-            activeViewControllerIsStale = true
-            let _ = popToRootViewController(animated: shouldAnimateTransitions)
+        let previousPosition = activePosition
+        activePosition = .left
+
+        switch previousPosition {
+        case .left:
+            let _ = popToViewController(leftVC, animated: true)
+        case .right:
+            navigateAcross(to: leftVC)
             return
+        case .center:
+            pushViewController(leftVC, animated: true)
         }
+
+        activePosition = .left
     }
 
     @objc private func centerItemTapped()  {
@@ -241,33 +220,29 @@ public class StaticNavigationBarController: UINavigationController {
 
         staticNavigationBar?.rightItemSelected()
 
-        if activePosition == .right {
-            let _ = popToViewController(rightVC, animated: shouldAnimateTransitions)
-        } else {
-            activePosition = .right
-            activeViewControllerIsStale = true
-            let _ = popToRootViewController(animated: shouldAnimateTransitions)
-            return
+        let previousPosition = activePosition
+        activePosition = .right
+
+        switch previousPosition {
+        case .left:
+            navigateAcross(to: rightVC)
+        case .right:
+            let _ = popToViewController(rightVC, animated: true)
+        case .center:
+            pushViewController(rightVC, animated: true)
         }
     }
 
-    private func updatedNavigation() {
-        guard activeViewController != nil else { return }
-        if activeViewControllerIsStale {
-            switch activePosition {
-            case .left:
-                if let leftVC = self.leftViewController {
-                    self.pushViewController(leftVC, animated: self.shouldAnimateTransitions)
-                }
-                break
-            case .right:
-                if let rightVC = self.rightViewController {
-                    self.pushViewController(rightVC, animated: self.shouldAnimateTransitions)
-                }
-                break
-            case .center:
-                break
-            }
-        }
+    private func navigateAcross(to viewController: UIViewController) {
+        viewControllerStack.removeAll(after: 0)
+
+        rootViewController.transition(to: viewController,
+                                      middle: centerViewController,
+                                      direction: pushTransitionDirection,
+                                      animated: true,
+                                      duration: transitionDuration,
+                                      completion: nil)
+        activeViewController = viewController
+        viewControllerStack.append(viewController)
     }
 }
