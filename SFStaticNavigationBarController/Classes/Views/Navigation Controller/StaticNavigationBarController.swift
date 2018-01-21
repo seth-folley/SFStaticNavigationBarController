@@ -62,16 +62,11 @@ public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Transition variables
     public var shouldAnimateTransitions = true
-    var navigationAnimator = RootAnimator()
 
     private var pushTransitionDirection = TransitionDirection.fromLeft
     private var popTransitionDirection = TransitionDirection.fromLeft
 
-    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration {
-        didSet {
-            self.navigationAnimator.duration = transitionDuration
-        }
-    }
+    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration
 
     public var staticNavigationBar: StaticNavigationBar? {
         get {
@@ -219,6 +214,16 @@ public class StaticNavigationBarController: UINavigationController {
 
         if activePosition == .left {
             let _ = popToViewController(leftVC, animated: shouldAnimateTransitions)
+        } else if activePosition == .right {
+            activePosition = .left
+            activeViewController = leftVC
+            rootViewController.transition(to: leftVC,
+                                          middle: centerViewController,
+                                          direction: pushTransitionDirection,
+                                          animated: true,
+                                          duration: transitionDuration,
+                                          completion: nil )
+            staticNavigationBar?.moveSlider(to: .left)
         } else {
             activePosition = .left
             activeViewControllerIsStale = true
@@ -243,6 +248,16 @@ public class StaticNavigationBarController: UINavigationController {
 
         if activePosition == .right {
             let _ = popToViewController(rightVC, animated: shouldAnimateTransitions)
+        } else if activePosition == .left {
+            activePosition = .right
+            activeViewController = rightVC
+            rootViewController.transition(to: rightVC,
+                                          middle: centerViewController,
+                                          direction: pushTransitionDirection,
+                                          animated: true,
+                                          duration: transitionDuration,
+                                          completion: nil )
+            staticNavigationBar?.moveSlider(to: .right)
         } else {
             activePosition = .right
             activeViewControllerIsStale = true
