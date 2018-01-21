@@ -49,7 +49,6 @@ public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Active variables
     private var activeViewController: UIViewController?
-    var activeViewControllerIsStale = false
     var activePosition = StaticNavigationPosition.center {
         didSet {
             // only update push/pop directions if new value isn't center
@@ -133,7 +132,6 @@ public class StaticNavigationBarController: UINavigationController {
 
         viewControllerStack.append(viewController)
         activeViewController = viewController
-        activeViewControllerIsStale = false
     }
 
     override public func popViewController(animated: Bool) -> UIViewController? {
@@ -156,15 +154,12 @@ public class StaticNavigationBarController: UINavigationController {
         staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
-        activeViewControllerIsStale = false
 
         return poppedVC
     }
 
     override public func popToRootViewController(animated: Bool) -> [UIViewController]? {
-        if !activeViewControllerIsStale {
-            activePosition = .center
-        }
+        activePosition = .center
 
         return popToViewController(centerViewController, animated: animated)
     }
@@ -176,20 +171,14 @@ public class StaticNavigationBarController: UINavigationController {
 
         let removedVCs = viewControllerStack.removeAll(after: index)
 
-            var transitionDirection = popTransitionDirection
-            if activeViewControllerIsStale {
-                transitionDirection = pushTransitionDirection
-            }
+        rootViewController.transition(to: viewController,
+                                      direction: popTransitionDirection,
+                                      animated: animated,
+                                      duration: transitionDuration,
+                                      completion: nil)
+        staticNavigationBar?.moveSlider(to: activePosition)
 
-            rootViewController.transition(to: viewController,
-                                          direction: transitionDirection,
-                                          animated: animated,
-                                          duration: transitionDuration,
-                                          completion: nil)
-            staticNavigationBar?.moveSlider(to: activePosition)
-
-            activeViewController = viewController
-
+        activeViewController = viewController
 
         return removedVCs
     }
