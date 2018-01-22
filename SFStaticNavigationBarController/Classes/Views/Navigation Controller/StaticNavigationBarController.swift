@@ -51,7 +51,6 @@ public class StaticNavigationBarController: UINavigationController {
     internal var activeViewController: UIViewController?
     internal var activePosition = StaticNavigationPosition.center {
         didSet {
-            // only update push/pop directions if new value isn't center
             if activePosition != .center {
                 pushTransitionDirection = activePosition == .right ? .fromRight : .fromLeft
                 popTransitionDirection = activePosition == .right ? .fromLeft : .fromRight
@@ -126,12 +125,12 @@ public class StaticNavigationBarController: UINavigationController {
 
         switch previousPosition {
         case .left:
-            let _ = popToViewController(leftVC, animated: true)
+            let _ = popToViewController(leftVC, animated: shouldAnimateTransitions)
         case .right:
             navigateAcross(to: leftVC)
             return
         case .center:
-            pushViewController(leftVC, animated: true)
+            pushViewController(leftVC, animated: shouldAnimateTransitions)
         }
 
         activePosition = .left
@@ -158,9 +157,9 @@ public class StaticNavigationBarController: UINavigationController {
         case .left:
             navigateAcross(to: rightVC)
         case .right:
-            let _ = popToViewController(rightVC, animated: true)
+            let _ = popToViewController(rightVC, animated: shouldAnimateTransitions)
         case .center:
-            pushViewController(rightVC, animated: true)
+            pushViewController(rightVC, animated: shouldAnimateTransitions)
         }
     }
 }

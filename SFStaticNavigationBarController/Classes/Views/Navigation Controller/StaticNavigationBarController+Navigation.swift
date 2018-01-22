@@ -84,7 +84,7 @@ extension StaticNavigationBarController {
         rootViewController.transition(to: viewController,
                                       middle: centerViewController,
                                       direction: pushTransitionDirection,
-                                      animated: true,
+                                      animated: shouldAnimateTransitions,
                                       duration: transitionDuration,
                                       completion: nil)
         activeViewController = viewController
