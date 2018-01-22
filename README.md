@@ -8,6 +8,8 @@
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square
 )](http://mit-license.org)
 
+<img src="/docs/example1.gif" align="right" height="560px">
+
 ## Description
 `SFStaticNavigationBarController` is a custom `UINavigationController` with a static navigation bar.
 - A custom navigation bar with 3 possible states and an indicator for these states
@@ -19,6 +21,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 - iOS 9.0+
 - Swift 3.2
+- Currently only supports Portrait Orientations
 
 ## Installation
 SFStaticNavigationBarController is available through [CocoaPods](http://cocoapods.org). To install
