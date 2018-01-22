@@ -136,7 +136,8 @@ public class StaticNavigationBarController: UINavigationController {
     }
 
     @objc private func centerItemTapped()  {
-        guard !isTransitioning else { return }
+        guard !isTransitioning,
+              activeViewController != centerViewController else { return }
 
         activePosition = .center
 
