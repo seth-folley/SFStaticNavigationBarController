@@ -113,7 +113,7 @@ extension StaticNavigationBarController {
 
         isTransitioning = true
         rootViewController.transition(to: viewController,
-                                      middle: centerViewController,
+                                      middle: shouldAnimateAcrossCenter ? centerViewController : nil,
                                       direction: pushTransitionDirection,
                                       animated: shouldAnimateTransitions,
                                       duration: transitionDuration,

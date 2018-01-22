@@ -62,7 +62,7 @@ class SFRootViewController: UIViewController {
         transitionAnimator.animateTransition(using: transitionContext)
     }
 
-    func transition(to viewController: UIViewController, middle middleVC: UIViewController, direction: TransitionDirection,
+    func transition(to viewController: UIViewController, middle middleVC: UIViewController?, direction: TransitionDirection,
                     animated: Bool, duration: Double, completion: ((Bool) -> Void)?) {
 
         transitionAnimator.middleViewController = middleVC

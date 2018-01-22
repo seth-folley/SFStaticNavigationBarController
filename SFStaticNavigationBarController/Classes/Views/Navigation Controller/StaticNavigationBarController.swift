@@ -69,13 +69,13 @@ public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Transition variables
     public var shouldAnimateTransitions = true
+    public var shouldAnimateAcrossCenter = true
+    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration
 
     internal var isTransitioning = false
 
     internal var pushTransitionDirection = TransitionDirection.fromLeft
     internal var popTransitionDirection = TransitionDirection.fromLeft
-
-    public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration
 
     // MARK: Lifecycle
     public convenience init(centerViewController: UIViewController, toolbarClass: AnyClass? = nil) {

@@ -62,6 +62,8 @@ class ExampleRightViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        staticNavigationBarController?.shouldAnimateAcrossCenter = false
+
         // set navigation bar attributes
     }
 
