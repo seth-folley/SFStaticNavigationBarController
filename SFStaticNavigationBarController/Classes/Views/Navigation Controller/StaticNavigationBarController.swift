@@ -18,6 +18,12 @@ let kStaticNavIndicatorAnimationDuration = 0.3
 public class StaticNavigationBarController: UINavigationController {
 
     // MARK: Navigation Bar Items
+    public var staticNavigationBar: StaticNavigationBar? {
+        get {
+            return navigationBar as? StaticNavigationBar
+        }
+    }
+
     public var leftBarButtonItem: UIBarButtonItem? {
         didSet {
             leftBarButtonItem?.target = self
@@ -47,6 +53,9 @@ public class StaticNavigationBarController: UINavigationController {
     public var centerViewController = UIViewController()
     public var rightViewController: UIViewController?
 
+    internal var viewControllerStack: [UIViewController] = [ ]
+    internal var rootViewController = SFRootViewController()
+
     // MARK: Active variables
     internal var activeViewController: UIViewController?
     internal var activePosition = StaticNavigationPosition.center {
@@ -65,15 +74,6 @@ public class StaticNavigationBarController: UINavigationController {
     internal var popTransitionDirection = TransitionDirection.fromLeft
 
     public var transitionDuration: TimeInterval = kStaticNavIndicatorAnimationDuration
-
-    public var staticNavigationBar: StaticNavigationBar? {
-        get {
-            return navigationBar as? StaticNavigationBar
-        }
-    }
-
-    internal var viewControllerStack: [UIViewController] = [ ]
-    internal var rootViewController = SFRootViewController()
 
     // MARK: Lifecycle
     public convenience init(centerViewController: UIViewController, toolbarClass: AnyClass? = nil) {
