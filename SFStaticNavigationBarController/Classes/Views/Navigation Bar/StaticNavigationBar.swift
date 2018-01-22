@@ -46,7 +46,9 @@ public class StaticNavigationBar: UINavigationBar {
 
     /// The color of the slider. Default is Dark Gray
     public var isSliderHidden = false
-    public var sliderColor: UIColor = .darkGray
+    var sliderColor: UIColor {
+        return slider.color
+    }
 
     /// The corner radius for the slider. Default is 1.0
     var sliderCornerRadius: CGFloat {
@@ -57,7 +59,7 @@ public class StaticNavigationBar: UINavigationBar {
 
     public var slider = Slider()
 
-    public lazy var sliderView: UIView = {
+    lazy var sliderView: UIView = {
         let view = UIView(frame: .zero)
         view.frame.size = self.sliderSize
         view.frame.origin = self.sliderOrigin
