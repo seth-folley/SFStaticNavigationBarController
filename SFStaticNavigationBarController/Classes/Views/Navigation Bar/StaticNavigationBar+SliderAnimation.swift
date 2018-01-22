@@ -9,18 +9,6 @@ import Foundation
 import UIKit
 
 extension StaticNavigationBar {
-
-    // MARK: Position Selectors
-    func centerItemSelected() {
-        moveSlider(to: .center)
-    }
-    func leftItemSelected(){
-        moveSlider(to: .left)
-    }
-    func rightItemSelected(){
-        moveSlider(to: .right)
-    }
-
     func moveSlider(to position: StaticNavigationPosition, animated: Bool = true) {
         currentSliderPosition = position
 

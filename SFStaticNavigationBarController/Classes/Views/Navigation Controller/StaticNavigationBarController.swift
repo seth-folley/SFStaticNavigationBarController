@@ -70,6 +70,8 @@ public class StaticNavigationBarController: UINavigationController {
     // MARK: Transition variables
     public var shouldAnimateTransitions = true
 
+    internal var isTransitioning = false
+
     internal var pushTransitionDirection = TransitionDirection.fromLeft
     internal var popTransitionDirection = TransitionDirection.fromLeft
 
@@ -115,10 +117,9 @@ public class StaticNavigationBarController: UINavigationController {
 
    // MARK: Navigation Bar Items' Selectors
     @objc private func leftItemTapped() {
-        guard let leftVC = leftViewController else { return }
-        guard activeViewController != leftVC else { return }
-
-        staticNavigationBar?.leftItemSelected()
+        guard !isTransitioning,
+              let leftVC = leftViewController,
+              activeViewController != leftVC else { return }
 
         let previousPosition = activePosition
         activePosition = .left
@@ -132,23 +133,20 @@ public class StaticNavigationBarController: UINavigationController {
         case .center:
             pushViewController(leftVC, animated: shouldAnimateTransitions)
         }
-
-        activePosition = .left
     }
 
     @objc private func centerItemTapped()  {
-        activePosition = .center
+        guard !isTransitioning else { return }
 
-        staticNavigationBar?.centerItemSelected()
+        activePosition = .center
 
         let _ = popToRootViewController(animated: shouldAnimateTransitions)
     }
 
     @objc private func rightItemTapped() {
-        guard let rightVC = rightViewController else { return }
-        guard activeViewController != rightVC else { return }
-
-        staticNavigationBar?.rightItemSelected()
+        guard !isTransitioning,
+              let rightVC = rightViewController,
+              activeViewController != rightVC else { return }
 
         let previousPosition = activePosition
         activePosition = .right

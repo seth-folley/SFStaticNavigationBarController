@@ -11,6 +11,10 @@ import UIKit
 extension StaticNavigationBarController {
     // MARK: Navigation
     override public func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        guard !isTransitioning else {
+            print("\(#function) failed because StaticNavigationBarController is currently transitioning.")
+            return
+        }
         guard activePosition != .center,
             activeViewController != viewController
             else {
@@ -18,11 +22,14 @@ extension StaticNavigationBarController {
                 return
         }
 
+        isTransitioning = true
         rootViewController.transition(to: viewController,
                                       direction: pushTransitionDirection,
                                       animated: animated,
                                       duration: transitionDuration,
-                                      completion: nil)
+                                      completion: { [weak self] _ in
+                                        self?.isTransitioning = false
+                                    })
         staticNavigationBar?.moveSlider(to: activePosition)
 
         viewControllerStack.append(viewController)
@@ -30,7 +37,10 @@ extension StaticNavigationBarController {
     }
 
     override public func popViewController(animated: Bool) -> UIViewController? {
-        // Cannot pop vc if there is only 1 left
+        guard !isTransitioning else {
+            print("\(#function) failed because StaticNavigationBarController is currently transitioning.")
+            return nil
+        }
         guard viewControllerStack.count > 1 else { return nil }
 
         let poppedVC = viewControllerStack.popLast()
@@ -41,11 +51,14 @@ extension StaticNavigationBarController {
             activePosition = .center
         }
 
+        isTransitioning = true
         rootViewController.transition(to: viewController,
         /*                           */direction: popTransitionDirection,
         /*                           */animated: animated,
         /*      ^--------^           */duration: transitionDuration,
-        /*       |｡◕‿‿◕｡|            */completion: nil)
+                                       /*       |｡◕‿‿◕｡|            */completion: { [weak self] _ in
+                                        self?.isTransitioning = false
+                                    })
         staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
@@ -54,23 +67,35 @@ extension StaticNavigationBarController {
     }
 
     override public func popToRootViewController(animated: Bool) -> [UIViewController]? {
+        guard !isTransitioning else {
+            print("\(#function) failed because StaticNavigationBarController is currently transitioning.")
+            return nil
+        }
+
         activePosition = .center
 
         return popToViewController(centerViewController, animated: animated)
     }
 
     override public func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+        guard !isTransitioning else {
+            print("\(#function) failed because StaticNavigationBarController is currently transitioning.")
+            return nil
+        }
         guard viewControllerStack.contains(viewController),
             let index = viewControllerStack.index(of: viewController)
             else { return nil }
 
         let removedVCs = viewControllerStack.removeAll(after: index)
 
+        isTransitioning = true
         rootViewController.transition(to: viewController,
                                       direction: popTransitionDirection,
                                       animated: animated,
                                       duration: transitionDuration,
-                                      completion: nil)
+                                      completion: { [weak self] _ in
+                                        self?.isTransitioning = false
+                                    })
         staticNavigationBar?.moveSlider(to: activePosition)
 
         activeViewController = viewController
@@ -79,14 +104,24 @@ extension StaticNavigationBarController {
     }
 
     internal func navigateAcross(to viewController: UIViewController) {
+        guard !isTransitioning else {
+            print("\(#function) failed because StaticNavigationBarController is currently transitioning.")
+            return
+        }
+
         viewControllerStack.removeAll(after: 0)
 
+        isTransitioning = true
         rootViewController.transition(to: viewController,
                                       middle: centerViewController,
                                       direction: pushTransitionDirection,
                                       animated: shouldAnimateTransitions,
                                       duration: transitionDuration,
-                                      completion: nil)
+                                      completion: { [weak self] _ in
+                                        self?.isTransitioning = false
+                                    })
+        staticNavigationBar?.moveSlider(to: activePosition)
+
         activeViewController = viewController
         viewControllerStack.append(viewController)
     }
