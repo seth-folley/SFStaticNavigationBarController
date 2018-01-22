@@ -43,7 +43,7 @@ staticNavBarController.leftBarButtonItem = SomeUIBarButtonItem()
 staticNavBarController.rightBarButtonItem = SomeUIBarButtonItem()
 staticNavBarController.centerItem = SomeUIView()
 ```
-## Accessing the Nav Controller
+### Accessing the Nav Controller
 You can access this navigation controller as you normally would using `myViewController.navigationController`. Also, available to all view controllers is:
 ```swift
 var staticNavigationBarController: StaticNavigationBarController?
