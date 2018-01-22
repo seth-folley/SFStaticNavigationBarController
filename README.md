@@ -55,7 +55,8 @@ var staticNavigationBarController: StaticNavigationBarController?
 Currently, custom view controller transition animations are not supported. The default transition animations are "natural" depending on what the active position is. Push and pop transitions are also "natural."
 Accessible variables pertaining to transition animations are:
 ```swift
-var shouldAnimateTransitions: Bool
+var shouldAnimateTransitions: Bool // default is true
+var shouldAnimateAcrossCenter: Bool // default is true
 var transitionDuration: TimeInterval // default is 0.3s
 ```
 
